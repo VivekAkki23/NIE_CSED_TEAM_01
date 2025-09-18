@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import  java.util.Optional;
 
 @RestController
 @RequestMapping("/api/members")
@@ -17,7 +17,7 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @PostMapping("/register")
+     @PostMapping("/register")
     public ResponseEntity<Member> registerMember(@RequestBody Member member) {
         Member newMember = memberService.registerMember(member);
         return new ResponseEntity<>(newMember, HttpStatus.CREATED);
@@ -27,7 +27,7 @@ public class MemberController {
     public ResponseEntity<Member> getMemberById(@PathVariable String id) {
         Optional<Member> member = memberService.getMemberById(id);
         return member.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .orElseGet(() ->  new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping
@@ -37,11 +37,11 @@ public class MemberController {
     }
 
     @PutMapping("/{id}/update-balance")
-    public ResponseEntity<Member> updateMemberBalance(@PathVariable String id, @RequestBody double amount) {
+    public ResponseEntity<Member>  updateMemberBalance(@PathVariable String id, @RequestBody double amount) {
         Member updatedMember = memberService.updateMemberBalance(id, amount);
         if (updatedMember != null) {
             return new ResponseEntity<>(updatedMember, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
