@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 public class TransactionController {
 
     @Autowired
-    private TransactionService transactionService;
+    private  TransactionService transactionService;
 
     @PostMapping
     public ResponseEntity<Transaction> recordGamePlay(@RequestParam String memberId, @RequestParam String gameId) {
-        Transaction newTransaction = transactionService.recordGamePlay(memberId, gameId);
-        if (newTransaction != null) {
-            return new ResponseEntity<>(newTransaction, HttpStatus.CREATED);
+        Transaction  newTransaction = transactionService.recordGamePlay(memberId, gameId);
+        if (newTransaction !=  null) {
+            return new  ResponseEntity<>(newTransaction, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
