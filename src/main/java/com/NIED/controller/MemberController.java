@@ -12,7 +12,7 @@ import  java.util.Optional;
 
 @RestController
 @RequestMapping("/api/members")
-public class MemberController {
+ public class MemberController {
 
     @Autowired
     private MemberService memberService;
@@ -25,14 +25,14 @@ public class MemberController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Member> getMemberById(@PathVariable String id) {
-        Optional<Member> member = memberService.getMemberById(id);
+         Optional<Member> member = memberService.getMemberById(id);
         return member.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() ->  new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                 .orElseGet(() ->  new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping
     public ResponseEntity<List<Member>> getAllMembers() {
-        List<Member> members = memberService.getAllMembers();
+          List<Member> members = memberService.getAllMembers();
         return new ResponseEntity<>(members, HttpStatus.OK);
     }
 

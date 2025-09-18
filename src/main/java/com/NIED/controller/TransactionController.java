@@ -17,9 +17,9 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<Transaction> recordGamePlay(@RequestParam String memberId, @RequestParam String gameId) {
         Transaction  newTransaction = transactionService.recordGamePlay(memberId, gameId);
-        if (newTransaction !=  null) {
+         if (newTransaction !=  null) {
             return new  ResponseEntity<>(newTransaction, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

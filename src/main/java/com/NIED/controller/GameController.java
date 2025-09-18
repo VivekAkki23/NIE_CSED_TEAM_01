@@ -14,13 +14,13 @@ import java.util.Optional;
 @RequestMapping("/api/games")
 public class GameController {
 
-    @Autowired
+     @Autowired
     private GameService gameService;
 
-    @PostMapping
+     @PostMapping
     public ResponseEntity<Game> createGame(@RequestBody Game game) {
         Game newGame = gameService.createGame(game);
-        return new ResponseEntity<>(newGame, HttpStatus.CREATED);
+         return new ResponseEntity<>(newGame, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -30,9 +30,9 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Game> getGameById(@PathVariable String id) {
+     public ResponseEntity<Game> getGameById(@PathVariable String id) {
         Optional<Game> game = gameService.getGameById(id);
         return game.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
