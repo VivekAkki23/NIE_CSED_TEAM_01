@@ -44,4 +44,4 @@ public class MemberController {
         }
         return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-}
+} 
